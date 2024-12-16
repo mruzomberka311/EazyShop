@@ -1,6 +1,7 @@
 package org.yearup.data.mysql;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -25,8 +27,24 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public List<Category> getAllCategories()
     {
-        // get all categories
-        return null;
+        List<Category> categories = new ArrayList<>();
+        String query = "SELECT * FROM categories";
+
+        try (Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);){
+
+        ResultSet row = preparedStatement.executeQuery();
+        while (row.next()){
+            categories.add(mapRow(row));
+        }
+
+        }catch (Exception e){
+            System.out.println("An error has occurred");
+            e.printStackTrace();
+        }
+
+
+        return categories;
     }
 
     @Override
@@ -36,8 +54,12 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
       try (Connection connection = getConnection();
            PreparedStatement preparedStatement = connection.prepareStatement(query);){
+          preparedStatement.setInt(1, categoryId);
+
            ResultSet row = preparedStatement.executeQuery();
-           mapRow(row);
+           while (row.next()) {
+               mapRow(row);
+           }
 
 
       }catch (Exception e){
@@ -53,7 +75,14 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         String query = "INSERT INTO categories (category_id, name, description) VALUES (?,?,?)";
         try (Connection connection = getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query);){
+            preparedStatement.setInt(1,category.getCategoryId());
+            preparedStatement.setString(2, category.getName());
+            preparedStatement.setString(3, category.getDescription());
+            int rows = preparedStatement.executeUpdate();
 
+            if (rows == 0){
+                throw new SQLException("Insert failed, no rows were affected");
+            }
 
         }catch (Exception e){
             System.out.println("An error has occurred");
