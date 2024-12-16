@@ -38,7 +38,7 @@ public class CategoriesController
     }
 
     // add the appropriate annotation for a get action
-    @GetMapping("/{categoryId}")
+    @GetMapping("/{id}")
     public Category getById(@PathVariable int id)
     {
         return categoryDao.getById(id);
