@@ -51,12 +51,12 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
              PreparedStatement preparedStatement = connection.prepareStatement(query);) {
             preparedStatement.setInt(1, categoryId);
 
-            ResultSet row = preparedStatement.executeQuery();
-            if (row.next()) {
-                Category category = mapRow(row);
-                return category;
-            }
-
+           try(ResultSet row = preparedStatement.executeQuery()) {
+               if (row.next()) {
+                   Category category = mapRow(row);
+                   return category;
+               }
+           }
 
         } catch (Exception e) {
             System.out.println("An error has occurred");
@@ -116,6 +116,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
     @Override
     public void delete(int categoryId) {
         String query = "DELETE FROM categories WHERE category_id = ?";
+
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);) {
             preparedStatement.setInt(1, categoryId);
