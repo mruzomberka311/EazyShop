@@ -18,7 +18,7 @@ import java.util.List;
     // http://localhost:8080/categories
 // add annotation to allow cross site origin requests
 @RestController
-@RequestMapping ("categories")
+@RequestMapping ("/categories")
 @CrossOrigin
 
 public class CategoriesController
@@ -35,7 +35,7 @@ public class CategoriesController
 
 
 
-    @GetMapping("")
+    @GetMapping
     @PreAuthorize("permitAll()")
     public List<Category> getAll()
     {
@@ -49,21 +49,22 @@ public class CategoriesController
     }
 
     // add the appropriate annotation for a get action
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     @PreAuthorize("permitAll()")
     public Category getById(@PathVariable int id)
     {
-        Category category = null;
+
         try {
-           category =  categoryDao.getById(id);
+            Category category =  categoryDao.getById(id);
+            if (category == null){
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
+            return  category;
         }
         catch (Exception e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops...our bad");
         }
-        if (category == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        return category;
+
     }
 
     // the url to return all products in category 1 would look like this
@@ -95,12 +96,12 @@ public class CategoriesController
     }
 
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
-   @PutMapping("{id}")
+   @PutMapping("/{categoryId}")
    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void updateCategory(@PathVariable int id, @RequestBody Category category)
+    public void updateCategory(@PathVariable int categoryId, @RequestBody Category category)
     {
         try {
-            categoryDao.update(id, category);
+            categoryDao.update(categoryId, category);
         }
         catch (Exception e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -109,18 +110,13 @@ public class CategoriesController
 
 
     // add annotation to call this method for a DELETE action - the url path must include the categoryId
-   @DeleteMapping("{id}")
+   @DeleteMapping("/{categoryId}")
    @PreAuthorize("hasRole('ROLE_ADMIN')")
    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCategory(@PathVariable int id)
+    public void deleteCategory(@PathVariable int categoryId)
     {
         try {
-            var category = categoryDao.getById(id);
-
-            if (category == null)
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-
-            categoryDao.delete(id);
+            categoryDao.delete(categoryId);
         }
         catch (Exception e)
         {
