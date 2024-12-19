@@ -45,6 +45,7 @@ Follow these steps to get your application running within IntelliJ IDEA:
 ![Screenshot (53).png](../../../../../Pictures/Screenshots/Screenshot%20%2853%29.png)
 ![Screenshot (52).png](../../../../../Pictures/Screenshots/Screenshot%20%2852%29.png)
 ![Screenshot (51).png](../../../../../Pictures/Screenshots/Screenshot%20%2851%29.png)
+![Screenshot (54)](https://github.com/user-attachments/assets/2c352c94-07c4-42e3-9d91-76adeaa52655)
 
 ## Future Work
 
