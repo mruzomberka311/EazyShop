@@ -41,10 +41,12 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Demo
 
-![Screenshot (54).png](../../../../../Pictures/Screenshots/Screenshot%20%2854%29.png)
-![Screenshot (53).png](../../../../../Pictures/Screenshots/Screenshot%20%2853%29.png)
-![Screenshot (52).png](../../../../../Pictures/Screenshots/Screenshot%20%2852%29.png)
-![Screenshot (51).png](../../../../../Pictures/Screenshots/Screenshot%20%2851%29.png)
+![Screenshot (51)](https://github.com/user-attachments/assets/24ba226a-db38-493c-bebe-2e5df2279903)
+
+![Screenshot (52)](https://github.com/user-attachments/assets/d6b8b28d-3a9d-4fa1-ba2b-75e3d6990185)
+
+![Screenshot (53)](https://github.com/user-attachments/assets/8a717379-860f-4ed1-85ab-05a3997883f9)
+
 ![Screenshot (54)](https://github.com/user-attachments/assets/2c352c94-07c4-42e3-9d91-76adeaa52655)
 
 ## Future Work
