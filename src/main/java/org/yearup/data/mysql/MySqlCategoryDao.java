@@ -46,7 +46,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
     public Category getById(int categoryId) {
 
         Category category = null;
-        String query = "SELECT * FROM categories WHERE category_Id = ?";
+        String query = "SELECT * FROM categories WHERE category_id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);) {
@@ -95,7 +95,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
 
     @Override
     public void update(int categoryId, Category category) {
-        String query = "UPDATE categories SET name = ?, description = ?, WHERE category_id = ?";
+        String query = "UPDATE categories SET name = ?, description = ? WHERE category_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);) {
             preparedStatement.setString(1, category.getName());
