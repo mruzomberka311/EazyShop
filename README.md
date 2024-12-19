@@ -10,10 +10,9 @@ API.
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
-
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
+- As a user, I would like to have the queries requesting categories to work.
+- As a user, I would like my program to work without any errors.
+-As a user I would like to log in to authenticate orders.
 
 ## Setup
 
@@ -42,9 +41,10 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Demo
 
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
+![Screenshot (54).png](../../../../../Pictures/Screenshots/Screenshot%20%2854%29.png)
+![Screenshot (53).png](../../../../../Pictures/Screenshots/Screenshot%20%2853%29.png)
+![Screenshot (52).png](../../../../../Pictures/Screenshots/Screenshot%20%2852%29.png)
+![Screenshot (51).png](../../../../../Pictures/Screenshots/Screenshot%20%2851%29.png)
 
 ## Future Work
 
@@ -56,8 +56,7 @@ Include screenshots or GIFs that show your application in action. Use tools like
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- [Java Programming Tutorial](https://www.example.com)
-- [Effective Java](https://www.example.com)
+- https://www.w3schools.com/java/java_lambda.asp 
 
 ## Team Members
 
